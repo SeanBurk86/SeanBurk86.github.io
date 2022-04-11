@@ -1,1 +1,317 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: black;
+}
+
+#mycanvas {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+//glitch effect -------------------------------------------------------
+
+.glitch {
+  color: white;
+  font-size: 5vmin;
+  font-family: 'Major Mono Display', monospace;
+  position: relative;
+  justify-content: left;
+  width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+}
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      $topWithPercent: $top * 1%;
+      $bottomWithPercent: $bottom * 1%;
+      clip-path: inset(#{$topWithPercent} 0 #{$bottomWithPercent} 0);
+    }
+  }
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 red;
+  top: 0;
+  color: white;
+  background: transparent;
+  overflow: hidden;
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      $topWithPercent: $top * 1%;
+      $bottomWithPercent: $bottom * 1%;
+      clip-path: inset(#{$topWithPercent} 0 #{$bottomWithPercent} 0);
+    }
+  }
+}
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  top: 0;
+  color: white;
+  background: transparent;
+  overflow: hidden;
+  animation: noise-anim-2 15s infinite linear alternate-reverse;
+}
+
+
+
+//pre name -------------------------------------
+
+.postgreeting {
+  color: white;
+  font-family: 'Space Mono', monospace;
+  width: 95%;
+  font-size:5vmin;
+}
+
+
+//breathing name ------------------------------------------------------------------------
+
+@keyframes breathe {
+  0% {
+    font-variation-settings: 'wght' 100;
+    font-size: 20vmin;
+  }
+  60% {
+    font-variation-settings: 'wght' 700;
+    font-size: 25vmin;
+  }
+
+  100% {
+    font-variation-settings: 'wght' 100;
+    font-size: 20vmin;
+  }
+}
+
+.myname {
+  position: fixed;
+  top: 15vmin;
+  bottom: 40vmin;
+  left: 10vmin;
+  right: 10vmin;
+}
+
+.firstname, .lastname {
+  font-family: "IBM Plex Sans Roman", Times;
+  position: relative;
+  justify-content: center;
+  color: white;
+  animation: breathe 4000ms infinite both;
+}
+
+.lastname{
+  margin-top: -10vh;
+  animation-delay: 2000ms;
+}
+
+
+
+//postname -----------------------------------------
+
+.postname {
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-style: italic;
+  font-size: 2vmax;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 15vh;
+}
+
+
+//social media bar -------------------------------
+
+.socialmediabar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: auto;
+  bottom: 9.5vh;
+  font-size: 5vmin;
+}
+
+.fa-brands, .fa-solid {
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: midnightblue;
+}
+
+.fa-brands:hover, .fa-solid:hover {
+  opacity: 0.7;
+}
+
+
+//ticker --------------------------------------------
+
+$duration: 30s;
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  overflow: hidden;
+  height: 8vh;
+  background-color: rgba(#000, 0.9);
+  padding-left: 100%;
+  box-sizing: content-box;
+  left: 0;
+
+  .ticker {
+
+    display: inline-block;
+    height: 4rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: $duration;
+    animation-duration: $duration;
+
+    &__item {
+
+      display: inline-block;
+
+      padding: 0 2rem;
+      font-size: 2rem;
+      color: white;
+
+    }
+
+  }
+
+  .ticker:hover {
+    animation-play-state: paused;
+  }
+
+}
+
+
+//mobile adjustments -----------------------------
+
+@media only screen and (orientation: portrait){
+  .myname{
+    top: 15em;
+    left: 0;
+  }
+  .lastname {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-height: 667px) {
+  .myname{
+    top: 10em;
+  }
+}
+
+@media only screen and (max-height: 428px) {
+  .myname{
+    top: 5em;
+  }
+}
+
+@media only screen and (max-height: 414px) {
+  .myname{
+    top: 4em;
+  }
+}
+
+@media only screen and (max-height: 390px) {
+  .myname{
+    top: 4em;
+  }
+}
+
+@media only screen and (max-height: 375px) {
+  .myname{
+    top: 4em;
+  }
+}
+
+
+
+
+
+
+
